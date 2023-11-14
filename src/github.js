@@ -2,9 +2,11 @@
 
 const core = require('@actions/core');
 const fs = require('fs');
+const fetch = require('node-fetch');
 const github = require('@actions/github');
 const partition = require('lodash/partition');
 const yaml = require('yaml');
+const unzipSync = require('fflate');
 const { LOCAL_FILE_MISSING } = require('./constants');
 
 class PullRequest {
@@ -96,6 +98,43 @@ async function fetch_changed_files() {
   return changed_files;
 }
 
+async function fetch_junit_report() {
+  const context = get_context();
+  const octokit = get_octokit();
+
+  const { data: response_body } = await octokit.actions.listWorkflowRunArtifacts({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    run_id: context.runId,
+    name: get_junit_report_artifact_name(),
+    page: 0,
+    per_page: 1,
+  });
+
+  core.info(`Found artifact: ${response_body.artifacts[0]}`);
+
+  const url = await octokit.actions.downloadArtifact({
+    owner: context.repo.owner,
+    repo: context.repo.repo,
+    artifact_id: response_body.artifacts[0].id,
+    archive_format: 'zip',
+  });
+
+  core.info(`Got artifact download url: ${url}`);
+
+  const zipData = await fetch(url).then((res) => res.arrayBuffer());
+  const unzipped = unzipSync(new Uint8Array(zipData));
+
+  const file = unzipped['js-test-results.xml'];
+
+  if (!file) {
+    throw new Error('No js-test-results.xml found in artifact');
+  }
+
+  core.info('Got js-test-results.xml');
+  return file;
+}
+
 async function assign_reviewers(reviewers) {
   const context = get_context();
   const octokit = get_octokit();
@@ -119,6 +158,7 @@ let token_cache;
 let config_path_cache;
 let use_local_cache;
 let octokit_cache;
+let junit_report_artifact_name;
 
 function get_context() {
   return context_cache || (context_cache = github.context);
@@ -152,10 +192,15 @@ function clear_cache() {
   octokit_cache = undefined;
 }
 
+function get_junit_report_artifact_name() {
+  return junit_report_artifact_name || (junit_report_artifact_name = core.getInput('junit_report_artifact_name'));
+}
+
 module.exports = {
   get_pull_request,
   fetch_config,
   fetch_changed_files,
   assign_reviewers,
   clear_cache,
+  fetch_junit_report,
 };

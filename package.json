@@ -15,8 +15,10 @@
   "dependencies": {
     "@actions/core": "^1.9.1",
     "@actions/github": "^4.0.0",
+    "fflate": "^0.8.1",
     "lodash": "^4.17.21",
     "minimatch": "^3.0.5",
+    "test-results-parser": "^0.1.6",
     "yaml": "^2.2.2"
   },
   "devDependencies": {
