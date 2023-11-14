@@ -8,10 +8,12 @@ inputs:
     required: true
   config:
     required: false
-    default: '.github/auto_request_review.yml'
+    default: '.github/owners.yml'
   use_local:
     required: false
     default: 'false'
+  junit-artifact:
+    required: true
 runs:
   using: 'node16'
   main: 'dist/index.js'

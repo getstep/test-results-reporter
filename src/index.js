@@ -43,8 +43,8 @@ async function run() {
 
   core.info('Fetching junit report');
   const report = await github.fetch_junit_report();
-  console.log("=>(index.js:47) report", report);
-  core.info('Identifying reviewers based on the changed files');
+  core.info("=>(index.js:47) report", report);
+ /* core.info('Identifying reviewers based on the changed files');
   const reviewers_based_on_files = identify_reviewers_by_changed_files({ config, changed_files, excludes: [ author ] });
 
   core.info('Identifying reviewers based on the author');
@@ -72,7 +72,7 @@ async function run() {
   reviewers = randomly_pick_reviewers({ reviewers, config });
 
   core.info(`Requesting review to ${reviewers.join(', ')}`);
-  await github.assign_reviewers(reviewers);
+  await github.assign_reviewers(reviewers);*/
 }
 
 module.exports = {
