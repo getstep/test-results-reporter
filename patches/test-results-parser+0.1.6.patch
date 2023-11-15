@@ -1,0 +1,13 @@
+diff --git a/node_modules/test-results-parser/src/parsers/junit.js b/node_modules/test-results-parser/src/parsers/junit.js
+index b733077..1dd05bb 100644
+--- a/node_modules/test-results-parser/src/parsers/junit.js
++++ b/node_modules/test-results-parser/src/parsers/junit.js
+@@ -15,6 +15,8 @@ function getTestCase(rawCase) {
+   } else {
+     test_case.status = 'PASS';
+   }
++
++  test_case.file = rawCase["@_file"];
+   return test_case;
+ }
+ 

@@ -7,6 +7,7 @@ const github = require('@actions/github');
 const partition = require('lodash/partition');
 const yaml = require('yaml');
 const unzipSync = require('fflate');
+const { parse } = require('test-results-parser');
 const { LOCAL_FILE_MISSING } = require('./constants');
 
 class PullRequest {
@@ -99,40 +100,15 @@ async function fetch_changed_files() {
 }
 
 async function fetch_junit_report() {
-  const context = get_context();
-  const octokit = get_octokit();
+  const junit_report_path = get_junit_report_path();
 
-  const { data: response_body } = await octokit.actions.listWorkflowRunArtifacts({
-    owner: context.repo.owner,
-    repo: context.repo.repo,
-    run_id: context.runId,
-    name: get_junit_report_artifact_name(),
-    page: 0,
-    per_page: 1,
-  });
+  core.info(`Looking for junit report: ${junit_report_path}`);
 
-  core.info(`Found artifact: ${response_body.artifacts[0]}`);
+  const result = parse({ type: 'junit', files: [junit_report_path] });
 
-  const url = await octokit.actions.downloadArtifact({
-    owner: context.repo.owner,
-    repo: context.repo.repo,
-    artifact_id: response_body.artifacts[0].id,
-    archive_format: 'zip',
-  });
+  core.info(`Got junit report: ${JSON.stringify(result)}`);
 
-  core.info(`Got artifact download url: ${url}`);
-
-  const zipData = await fetch(url).then((res) => res.arrayBuffer());
-  const unzipped = unzipSync(new Uint8Array(zipData));
-
-  const file = unzipped['js-test-results.xml'];
-
-  if (!file) {
-    throw new Error('No js-test-results.xml found in artifact');
-  }
-
-  core.info('Got js-test-results.xml');
-  return file;
+  return result;
 }
 
 async function assign_reviewers(reviewers) {
@@ -158,7 +134,7 @@ let token_cache;
 let config_path_cache;
 let use_local_cache;
 let octokit_cache;
-let junit_report_artifact_name;
+let junit_report_path;
 
 function get_context() {
   return context_cache || (context_cache = github.context);
@@ -192,8 +168,8 @@ function clear_cache() {
   octokit_cache = undefined;
 }
 
-function get_junit_report_artifact_name() {
-  return junit_report_artifact_name || (junit_report_artifact_name = core.getInput('junit_report_artifact_name'));
+function get_junit_report_path() {
+  return junit_report_path || (junit_report_path = core.getInput('junit_report_path'));
 }
 
 module.exports = {

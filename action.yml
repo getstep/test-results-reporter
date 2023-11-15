@@ -12,7 +12,7 @@ inputs:
   use_local:
     required: false
     default: 'false'
-  junit-artifact:
+  junit_report_path:
     required: true
 runs:
   using: 'node16'

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="4" failures="4" errors="0" time="6697.564">
+    <testsuite name="Managed account graduation" errors="0" failures="4" skipped="0" timestamp="2023-11-18T23:51:02" time="1296.252" tests="4">
+        <testcase classname="Managed account graduation Parent can send a graduation invite" name="Managed account graduation Parent can send a graduation invite" time="304.065" file="test/e2e/accountInformation/managedAccountGraduation.test.ts">
+            <failure>Error: thrown: &quot;Exceeded timeout of 300000 ms for a test.
+                Use jest.setTimeout(newTimeout) to increase the timeout value, if this is a long-running test.&quot;
+                at /Users/nik/git/step/client/test/e2e/accountInformation/managedAccountGraduation.test.ts:46:5
+                at _dispatchDescribe (/Users/nik/git/step/client/node_modules/jest-circus/build/index.js:98:26)
+                at describe (/Users/nik/git/step/client/node_modules/jest-circus/build/index.js:60:5)
+                at Object.&lt;anonymous&gt; (/Users/nik/git/step/client/test/e2e/accountInformation/managedAccountGraduation.test.ts:27:1)
+                at Runtime._execModule (/Users/nik/git/step/client/node_modules/jest-runtime/build/index.js:1646:24)
+                at Runtime._loadModule (/Users/nik/git/step/client/node_modules/jest-runtime/build/index.js:1185:12)
+                at Runtime.requireModule (/Users/nik/git/step/client/node_modules/jest-runtime/build/index.js:1009:12)
+                at /Users/nik/git/step/client/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:58:15
+                at Generator.next (&lt;anonymous&gt;)
+                at asyncGeneratorStep (/Users/nik/git/step/client/node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:24)</failure>
+        </testcase>
+        <testcase classname="Managed account graduation Parent can merge a managed user with sponsored if they enter their phone number" name="Managed account graduation Parent can merge a managed user with sponsored if they enter their phone number" time="303.601" file="test/e2e/accountInformation/managedAccountGraduation.test.ts">
+            <failure>Error: thrown: &quot;Exceeded timeout of 300000 ms for a test.
+                Use jest.setTimeout(newTimeout) to increase the timeout value, if this is a long-running test.&quot;
+                at /Users/nik/git/step/client/test/e2e/accountInformation/managedAccountGraduation.test.ts:58:5
+                at _dispatchDescribe (/Users/nik/git/step/client/node_modules/jest-circus/build/index.js:98:26)
+                at describe (/Users/nik/git/step/client/node_modules/jest-circus/build/index.js:60:5)
+                at Object.&lt;anonymous&gt; (/Users/nik/git/step/client/test/e2e/accountInformation/managedAccountGraduation.test.ts:27:1)
+                at Runtime._execModule (/Users/nik/git/step/client/node_modules/jest-runtime/build/index.js:1646:24)
+                at Runtime._loadModule (/Users/nik/git/step/client/node_modules/jest-runtime/build/index.js:1185:12)
+                at Runtime.requireModule (/Users/nik/git/step/client/node_modules/jest-runtime/build/index.js:1009:12)
+                at /Users/nik/git/step/client/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:58:15
+                at Generator.next (&lt;anonymous&gt;)
+                at asyncGeneratorStep (/Users/nik/git/step/client/node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:24)</failure>
+        </testcase>
+        <testcase classname="Managed account graduation Parent can merge a managed user with not sponsored who sent an invite" name="Managed account graduation Parent can merge a managed user with not sponsored who sent an invite" time="303.366" file="test/e2e/accountInformation/managedAccountGraduation.test.ts">
+            <failure>Error: thrown: &quot;Exceeded timeout of 300000 ms for a test.
+                Use jest.setTimeout(newTimeout) to increase the timeout value, if this is a long-running test.&quot;
+                at /Users/nik/git/step/client/test/e2e/accountInformation/managedAccountGraduation.test.ts:66:5
+                at _dispatchDescribe (/Users/nik/git/step/client/node_modules/jest-circus/build/index.js:98:26)
+                at describe (/Users/nik/git/step/client/node_modules/jest-circus/build/index.js:60:5)
+                at Object.&lt;anonymous&gt; (/Users/nik/git/step/client/test/e2e/accountInformation/managedAccountGraduation.test.ts:27:1)
+                at Runtime._execModule (/Users/nik/git/step/client/node_modules/jest-runtime/build/index.js:1646:24)
+                at Runtime._loadModule (/Users/nik/git/step/client/node_modules/jest-runtime/build/index.js:1185:12)
+                at Runtime.requireModule (/Users/nik/git/step/client/node_modules/jest-runtime/build/index.js:1009:12)
+                at /Users/nik/git/step/client/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:58:15
+                at Generator.next (&lt;anonymous&gt;)
+                at asyncGeneratorStep (/Users/nik/git/step/client/node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:24)</failure>
+        </testcase>
+        <testcase classname="Managed account graduation Parent cannot merge a managed user with sponsored if there is an activity" name="Managed account graduation Parent cannot merge a managed user with sponsored if there is an activity" time="304.051" file="test/e2e/accountInformation/managedAccountGraduation.test.ts">
+            <failure>Error: thrown: &quot;Exceeded timeout of 300000 ms for a test.
+                Use jest.setTimeout(newTimeout) to increase the timeout value, if this is a long-running test.&quot;
+                at /Users/nik/git/step/client/test/e2e/accountInformation/managedAccountGraduation.test.ts:94:5
+                at _dispatchDescribe (/Users/nik/git/step/client/node_modules/jest-circus/build/index.js:98:26)
+                at describe (/Users/nik/git/step/client/node_modules/jest-circus/build/index.js:60:5)
+                at Object.&lt;anonymous&gt; (/Users/nik/git/step/client/test/e2e/accountInformation/managedAccountGraduation.test.ts:27:1)
+                at Runtime._execModule (/Users/nik/git/step/client/node_modules/jest-runtime/build/index.js:1646:24)
+                at Runtime._loadModule (/Users/nik/git/step/client/node_modules/jest-runtime/build/index.js:1185:12)
+                at Runtime.requireModule (/Users/nik/git/step/client/node_modules/jest-runtime/build/index.js:1009:12)
+                at /Users/nik/git/step/client/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:58:15
+                at Generator.next (&lt;anonymous&gt;)
+                at asyncGeneratorStep (/Users/nik/git/step/client/node_modules/@babel/runtime/helpers/asyncToGenerator.js:3:24)</failure>
+        </testcase>
+    </testsuite>
+</testsuites>
